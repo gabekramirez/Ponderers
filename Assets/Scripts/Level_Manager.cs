@@ -12,6 +12,6 @@ public class Level_Manager : MonoBehaviour
     void LoadNextLevel()
     {
         //vignette_animator.Play("CloseLevel");
-        vignette_animator.StopPlayback();
+        vignette_animator.SetTrigger("SwapAnimation");
     }
 }
