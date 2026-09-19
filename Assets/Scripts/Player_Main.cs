@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -52,7 +53,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         sprite_anim_time += Time.deltaTime;
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, movement_vector, 0.5f);
-        if (rayHit)
+        if (rayHit && rayHit.collider.CompareTag("Untagged"))
         {
             transform.position = new Vector3(rayHit.point.x, rayHit.point.y, 0f) - movement_vector * .5f;
             movement_vector = Vector3.zero;
