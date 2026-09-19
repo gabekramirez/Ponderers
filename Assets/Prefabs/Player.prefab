@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5415394138705593524}
   - component: {fileID: 2180859078937521908}
   - component: {fileID: 1645315710807248373}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,5 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   still_frame: {fileID: -8882251506033808833, guid: 30359e79988c742b0b4ac3767f20f509, type: 3}
-  movement_1: {fileID: 7789675795861164258, guid: 8f0521a6decf34f02b68b5a7c7e782ab, type: 3}
-  movment_2: {fileID: 4481729846745234183, guid: 41d887801d4de4b9384d0d75f001784f, type: 3}
+  movement_frames: []
