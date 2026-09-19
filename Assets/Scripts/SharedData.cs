@@ -12,30 +12,18 @@ public class SharedData : MonoBehaviour
         SoundEffects,
         NumberOfGameAudioTypes
     };
-    [HideInInspector] public List<float> volumes;  // GameAudioType -> float
+    [HideInInspector] public static List<float> volumes;  // GameAudioType -> float
+    public static GameAudioType gameAudioType;
 
-
-
-
-
-    // BOILER PLATE
-    private static SharedData _instance;
-    public static SharedData Instance {get {return _instance;}}
 
     void Awake()
     {
+        SharedData.volumes = new List<float>();
         // VOLUME
         for (int i = 0; i < (int)GameAudioType.NumberOfGameAudioTypes; i++)
         {
-            volumes.Add(1.0f);            
+            SharedData.volumes.Add(1.0f);            
         }
 
-        // BOILER PLATE
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        } else {
-            _instance = this;
-        }
     }
 }

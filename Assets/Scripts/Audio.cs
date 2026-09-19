@@ -5,6 +5,7 @@ public class Audio : MonoBehaviour
 {
     // EDITOR
     [SerializeField] private SharedData.GameAudioType audioType;
+    [SerializeField] private bool stackAudio = false;
 
     // CODE
     private float customVolume = 1.0f;
@@ -13,15 +14,15 @@ public class Audio : MonoBehaviour
     // COMPONENTS
     AudioSource audioSource;
 
-    public void play(float volume = -1.0f, bool stackAudio = true)
+    public void play(float volume = -1.0f)
     {
         if (volume == -1.0f) {volume = customVolume;}
-        if (stackAudio)
+        if (stackAudio && isParent)
         {
             Audio newAudioSource = Instantiate(this);
             newAudioSource.customVolume = volume;
             newAudioSource.isParent = false;
-            newAudioSource.play(volume, false);
+            newAudioSource.play(volume);
         }
         else if (!audioSource.isPlaying)
         {
@@ -41,7 +42,7 @@ public class Audio : MonoBehaviour
 
     void Update()
     {
-        audioSource.volume = customVolume * SharedData.Instance.volumes[(int)audioType];
+        audioSource.volume = customVolume * SharedData.volumes[(int)audioType];
         if (!isParent && !audioSource.isPlaying)
         {
             Destroy(this.gameObject);
