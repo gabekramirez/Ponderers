@@ -19,12 +19,13 @@ public class LevelManager : MonoBehaviour
 
     public string nextSceneName;
     public static int SCENE_COUNT = 2;
-
+    public static List<int> attemptsPerLevel;
 
     [Header("UI Elements")]
     [SerializeField] private TMP_Text timeRemainingTXT;
     [SerializeField] private GameObject LevelEndPanel;
     [SerializeField] private GameObject TimeOutPanel;
+    [SerializeField] private GameObject SkipOffer;
 
     [Header("Animation")]
     [SerializeField] private GameObject vignetteAnimator;
@@ -41,11 +42,25 @@ public class LevelManager : MonoBehaviour
         firstInputPut = false;
         victoryComplete = false;
 
+        if(LevelManager.attemptsPerLevel == null){
+            LevelManager.attemptsPerLevel = new List<int>();
+            for(int i = 0; i < 25; i++){
+                LevelManager.attemptsPerLevel.Add(0);
+            }
+        }
+
         LevelEndPanel.SetActive(false);
 
+<<<<<<< Updated upstream
         //Set LOUIE THE LUMBERJACK to his start position
         player.position = louieStart.position;
 
+=======
+        //Offer skip 
+        int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
+        int attempts = LevelManager.attemptsPerLevel[currentSceneIdx];
+        SkipOffer.SetActive(attempts>0);
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -78,7 +93,6 @@ public class LevelManager : MonoBehaviour
 
         if(nextSceneIdx > LevelManager.SCENE_COUNT)
         {
-            //Trigger final animation
         }else{
             vignetteAnimator.SetActive(true);
             vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
@@ -103,6 +117,10 @@ public class LevelManager : MonoBehaviour
 
     public void ReplayLevel(){
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
+
+        //Trigger final animation
+        LevelManager.attemptsPerLevel[currentSceneIdx]++;
+
         SceneManager.LoadScene(currentSceneIdx);
     }
 
