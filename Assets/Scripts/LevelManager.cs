@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.InputSystem; 
+using System;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class LevelManager : MonoBehaviour
     public bool firstInputPut = false;
     public bool victoryComplete = false;
 
+
     public string nextSceneName;
     public static int SCENE_COUNT = 2;
 
@@ -23,15 +26,26 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject LevelEndPanel;
     [SerializeField] private GameObject TimeOutPanel;
 
+    [Header("Animation")]
+    [SerializeField] private GameObject vignetteAnimator;
+
+    [Header("Gameplay Objects")]
+    [SerializeField] private Transform louieStart;
+    [SerializeField] private Transform player;
+
     void Start(){
         //Initialization
-        inputTimeRemaining = 10f;
+        inputTimeRemaining = 100f;
         LevelManager.SCENE_COUNT = 2;
         timeRanOut = false;
         firstInputPut = false;
         victoryComplete = false;
 
         LevelEndPanel.SetActive(false);
+
+        //Set LOUIE THE LUMBERJACK to his start position
+        player.position = louieStart.position;
+
     }
 
     // Update is called once per frame
@@ -58,6 +72,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void NextLevel(){
+
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIdx = currentSceneIdx+1;
 
@@ -65,8 +80,25 @@ public class LevelManager : MonoBehaviour
         {
             //Trigger final animation
         }else{
-            SceneManager.LoadScene(nextSceneIdx);
+            vignetteAnimator.SetActive(true);
+            vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
+            ExecuteAfterTime(5.0f, () => MoveScene(nextSceneIdx));
         }
+    }
+
+    public void MoveScene(int sceneIdx){
+        SceneManager.LoadScene(sceneIdx);
+    }
+
+    public void ExecuteAfterTime(float time, Action action)
+    {
+        StartCoroutine(ExecuteAfterTimeCoroutine(time, action));
+    }
+
+    private IEnumerator ExecuteAfterTimeCoroutine(float time, Action action)
+    {
+        yield return new WaitForSeconds(time);
+        action?.Invoke();
     }
 
     public void ReplayLevel(){
