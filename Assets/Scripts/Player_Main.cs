@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.U2D.Animation;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -17,11 +19,17 @@ public class Player_Main : MonoBehaviour
     private float sprite_anim_time = 0f;
     private int input_frames = 0;
     private Vector3 buffer_direction = Vector3.zero;
+    private List<Door_Handler> doors = new List<Door_Handler>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         s_render = GetComponent<SpriteRenderer>();
         s_render.sprite = still_frame;
+        Object[] scene_items = FindObjectsByType<Door_Handler>();
+        for (int i = 0; i < scene_items.Length; i++)
+        {
+            doors.Add(scene_items[i] as Door_Handler);
+        }
     }
 
     void OnMove(InputValue value)
@@ -64,7 +72,16 @@ public class Player_Main : MonoBehaviour
         }else if (rayHit && rayHit.collider.CompareTag("Finish"))
         {
             //trigger win here
+        }else if (rayHit && rayHit.collider.CompareTag("Levers"))
+        {
+            
+            rayHit.collider.GetComponent<SpriteResolver>().SetCategoryAndLabel("Main", "Lever_1");
+            for (int i = 0; i < doors.Count; i++)
+            {
+                doors[i].OnLever();
+            }
         }
+
         if (movement_vector.magnitude > 0f)
         {
             s_render.sprite = movement_frames[Mathf.FloorToInt(sprite_anim_time) % movement_frames.Length];
