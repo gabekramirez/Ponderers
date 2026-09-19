@@ -97,9 +97,10 @@ public class LevelManager : MonoBehaviour
         if(nextSceneIdx > LevelManager.SCENE_COUNT)
         {
         }else{
+            GameObject.Find("Canvas").SetActive(false);
             vignetteAnimator.SetActive(true);
             vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
-            ExecuteAfterTime(5.0f, () => MoveScene(nextSceneIdx));
+            ExecuteAfterTime(1.5f, () => MoveScene(nextSceneIdx));
         }
     }
 
