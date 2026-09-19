@@ -5,7 +5,7 @@ public class CutsceneCharacter : MonoBehaviour
 {
     [SerializeField] private List<Sprite> walkAnimation;
     private Vector2 targetPosition;
-    private float time = 0.0f;
+    private float time = 1.0f;
     private float animationTime = 1.0f;
 
     public void GoTo(Vector2 goPosition, float goTime)

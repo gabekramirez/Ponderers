@@ -14,8 +14,13 @@ public class CutsceneManager : MonoBehaviour
     void Start()
     {
         scene.enabled = false;
-        ExecuteAfterTime(1.0f, () => louie.GoTo(new Vector2(0, -8.75f), 1.0f));
-        ExecuteAfterTime(1.0f, () => camera.GoTo(new Vector2(0, -6), 1.0f));
+        // down
+        ExecuteAfterTime(1.0f, () => louie.GoTo(new Vector2(0, -4.75f), 1.0f));
+        ExecuteAfterTime(1.0f, () => camera.GoTo(new Vector2(0, -2), 1.0f));
+
+        // right
+        ExecuteAfterTime(1.5f, () => louie.GoTo(new Vector2(6, -4.75f), 1.0f));
+        ExecuteAfterTime(1.5f, () => camera.GoTo(new Vector2(6, -2), 1.0f));
     }
 
     // Noah's execute after time thing
