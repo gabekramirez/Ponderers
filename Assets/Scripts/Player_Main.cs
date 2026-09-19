@@ -61,6 +61,9 @@ public class Player_Main : MonoBehaviour
             {
                 movement_vector = buffer_direction;
             }
+        }else if (rayHit && rayHit.collider.CompareTag("Finish"))
+        {
+            //trigger win here
         }
         if (movement_vector.magnitude > 0f)
         {
