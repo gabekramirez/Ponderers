@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: d4b777ccd6d9f364f83489bdc7987363
+guid: c47578cc2261d884181c1f2f7f221e6a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3572700178768253436
-    second: WoodWindow_0
+      213: 2422156924739482533
+    second: VignetteSpriteSheet_0
+  - first:
+      213: 8780581843452965731
+    second: VignetteSpriteSheet_1
+  - first:
+      213: 7222237091201359834
+    second: VignetteSpriteSheet_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WoodWindow_0
+      name: VignetteSpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 6
-        width: 11
-        height: 11
+        x: 0
+        y: 97
+        width: 640
+        height: 443
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,8 +136,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf1d47432e7c49130800000000000000
-      internalID: 3572700178768253436
+      spriteID: 5a37951d3ea3d9120800000000000000
+      internalID: 2422156924739482533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VignetteSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 144
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36332444aa4ead970800000000000000
+      internalID: 8780581843452965731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VignetteSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 145
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adf15b09e5a8a3460800000000000000
+      internalID: 7222237091201359834
       vertices: []
       indices: 
       edges: []
@@ -150,7 +200,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WoodWindow_0: 3572700178768253436
+      VignetteSpriteSheet_0: 2422156924739482533
+      VignetteSpriteSheet_1: 8780581843452965731
+      VignetteSpriteSheet_2: 7222237091201359834
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
