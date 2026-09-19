@@ -241,8 +241,61 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 414204014}
+  - {fileID: 231512044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &231512043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 231512044}
+  - component: {fileID: 231512045}
+  m_Layer: 0
+  m_Name: ResourceAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &231512044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231512043}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 216742821}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &231512045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231512043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6305ce4ad8fe8b4e90c4416aae7b15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceAssets
+  doorPieces:
+  - {fileID: -3895185698665564488, guid: 2deab15ba1ecd4f9f9e9c2b44cf766fd, type: 3}
+  wallPieces:
+  - {fileID: -748618706681097745, guid: 60d05aebc1aeb46be82ba31c3eaf58cc, type: 3}
+  windowPieces:
+  - {fileID: 3572700178768253436, guid: 714fd7d31ea8b4ee794e01f5b158dc59, type: 3}
+  roofPieces:
+  - {fileID: 7687142993236124527, guid: a13e764c7bde3403cbeab7bd1bab1250, type: 3}
 --- !u!1 &233789999
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +895,7 @@ MonoBehaviour:
   vignetteAnimator: {fileID: 298507485}
   louieStart: {fileID: 72940139}
   player: {fileID: 1502060366}
+  endPieceRenderer: {fileID: 1657238629}
 --- !u!1 &596312545
 GameObject:
   m_ObjectHideFlags: 0
@@ -4881,7 +4935,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.375, y: 0.65625}
+    oldSize: {x: 0.48, y: 0.84}
     newSize: {x: 0.625, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5426,6 +5480,7 @@ GameObject:
   - component: {fileID: 1657238631}
   - component: {fileID: 1657238632}
   - component: {fileID: 1657238633}
+  - component: {fileID: 1657238634}
   m_Layer: 0
   m_Name: EndGoal
   m_TagString: Finish
@@ -5483,7 +5538,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.052868605, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5503,7 +5558,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10.4404, y: -1.5129, z: 0}
-  m_LocalScale: {x: 0.95469177, y: 0.8944837, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1597631579}
@@ -5593,6 +5648,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1657238634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657238627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8542879f569ca4584699f98b13fc36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectibleEffect
+  spriteRenderer: {fileID: 1657238629}
+  floatAmount: 0.08
+  floatSpeed: 2
+  pulseAmount: 0.08
+  pulseSpeed: 2.5
+  turnAmount: 12
+  turnSpeed: 1.5
+  shimmer: 1
+  shimmerSpeed: 2
+  shimmerStrength: 0.35
+  glow: 1
+  glowAmount: 0.15
+  glowSpeed: 2
 --- !u!1 &1678783836
 GameObject:
   m_ObjectHideFlags: 0

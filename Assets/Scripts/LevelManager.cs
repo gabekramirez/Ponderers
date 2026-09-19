@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
     [Header("Gameplay Objects")]
     [SerializeField] private Transform louieStart;
     [SerializeField] private Transform player;
+    [SerializeField] private SpriteRenderer endPieceRenderer;
 
     void Start(){
         //Initialization
@@ -58,6 +59,8 @@ public class LevelManager : MonoBehaviour
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int attempts = LevelManager.attemptsPerLevel[currentSceneIdx];
         SkipOffer.SetActive(attempts>0);
+
+        endPieceRenderer.sprite = ResourceAssets.GetLevelPiece(currentSceneIdx);
     }
 
     // Update is called once per frame
@@ -75,12 +78,15 @@ public class LevelManager : MonoBehaviour
         if(inputTimeRemaining <= 0f){
             timeRanOut = true;
             TimeOutPanel.SetActive(true);
+            player.GetComponent<Player_Main>().enabled = false;
         }
     }
 
     public void AchieveVictory(){
         victoryComplete = true;
         LevelEndPanel.SetActive(true);
+
+        player.GetComponent<Player_Main>().enabled = false;
     }
 
     public void NextLevel(){
