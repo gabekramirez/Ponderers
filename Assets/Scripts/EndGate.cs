@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EndGate : MonoBehaviour
 {
-<<<<<<< Updated upstream
     [Header("Script Reference")]
     private LevelManager levelManager;
 
@@ -21,17 +20,3 @@ public class EndGate : MonoBehaviour
         }
     }
 }
-=======
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
->>>>>>> Stashed changes

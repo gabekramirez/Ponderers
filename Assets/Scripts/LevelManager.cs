@@ -51,16 +51,13 @@ public class LevelManager : MonoBehaviour
 
         LevelEndPanel.SetActive(false);
 
-<<<<<<< Updated upstream
         //Set LOUIE THE LUMBERJACK to his start position
         player.position = louieStart.position;
-
-=======
+        
         //Offer skip 
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int attempts = LevelManager.attemptsPerLevel[currentSceneIdx];
         SkipOffer.SetActive(attempts>0);
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
