@@ -1,13 +1,33 @@
+using System;
+using System.Collections.Generic;
+using Mono.Cecil;
 using UnityEngine;
-
+[RequireComponent(typeof(SpriteRenderer))]
 public class ItemHover : MonoBehaviour
 {
+    public enum Pickup_Type
+    {
+        DOOR,
+        WALLS,
+        WINDOW,
+        ROOF
+    }
+    public Pickup_Type itemType = Pickup_Type.DOOR;
     private float elapsed;
     private float initial_y = 0f;
     const float MAX_OFFSET = 0.15f;
+    private List<Sprite> sprite_list = new List<Sprite>();
+    private SpriteRenderer s_renderer;
     void Start()
     {
+        s_renderer = GetComponent<SpriteRenderer>();
         initial_y = transform.position.y;
+        sprite_list.Add(Resources.Load<Sprite>("WoodDoor"));
+        sprite_list.Add(Resources.Load<Sprite>("WoodWall"));
+        sprite_list.Add(Resources.Load<Sprite>("WoodWindow"));
+        sprite_list.Add(Resources.Load<Sprite>("WoodRoof"));
+        s_renderer.sprite = sprite_list[(int)itemType];
+
     }
     // Update is called once per frame
     void Update()

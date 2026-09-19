@@ -10,7 +10,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public Sprite[] movement_frames;
 
     const float SPEED = 15.0f;
-    const float ACCEL = 50.0f;
+    const float ACCEL = 30.0f;
     float current_speed = 0f;
     private Vector3 movement_vector = Vector3.zero;
     private SpriteRenderer s_render;
@@ -51,13 +51,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
         current_speed = Mathf.Clamp(current_speed, 0f, SPEED);
         transform.position += movement_vector * current_speed * Time.deltaTime;
 
-        sprite_anim_time += Time.deltaTime;
+        sprite_anim_time += Time.deltaTime * 4;
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, movement_vector, 0.5f);
         if (rayHit && rayHit.collider.CompareTag("Untagged"))
         {
             transform.position = new Vector3(rayHit.point.x, rayHit.point.y, 0f) - movement_vector * .5f;
             movement_vector = Vector3.zero;
-            if (input_frames < 20)
+            if (input_frames < 10)
             {
                 movement_vector = buffer_direction;
             }
