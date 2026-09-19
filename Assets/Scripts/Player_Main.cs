@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Player_Main : MonoBehaviour
 {
     public Sprite still_frame;
     public Sprite[] movement_frames;
