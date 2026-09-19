@@ -15,8 +15,7 @@ public class EndGate : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Go to next level");
-            levelManager.NextLevel();
+            levelManager.AchieveVictory();
         }
     }
 }

@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
 
     void Start(){
         //Initialization
-        inputTimeRemaining = 100f;
+        inputTimeRemaining = 10f;
         LevelManager.SCENE_COUNT = 2;
         timeRanOut = false;
         firstInputPut = false;

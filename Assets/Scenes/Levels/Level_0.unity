@@ -4003,7 +4003,7 @@ Tilemap:
     m_Data: {fileID: 8548585464831606472, guid: 25fab9ef2a3241b4eab21f5a90cc9e09, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
-    m_RefCount: 218
+    m_RefCount: 120
     m_Data:
       e00: 1
       e01: 0
@@ -4501,9 +4501,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1645315710807248373, guid: 804a667c053ab491a851a6d50abc27a9, type: 3}
+      propertyPath: still_frame
+      value: 
+      objectReference: {fileID: -8418797767302713298, guid: f443398771cf75f4abc997164949b491, type: 3}
+    - target: {fileID: 1645315710807248373, guid: 804a667c053ab491a851a6d50abc27a9, type: 3}
       propertyPath: movement_frames.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1645315710807248373, guid: 804a667c053ab491a851a6d50abc27a9, type: 3}
+      propertyPath: 'movement_frames.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8418797767302713298, guid: f443398771cf75f4abc997164949b491, type: 3}
+    - target: {fileID: 1645315710807248373, guid: 804a667c053ab491a851a6d50abc27a9, type: 3}
+      propertyPath: 'movement_frames.Array.data[1]'
+      value: 
+      objectReference: {fileID: -2303979636565211506, guid: f443398771cf75f4abc997164949b491, type: 3}
+    - target: {fileID: 2180859078937521908, guid: 804a667c053ab491a851a6d50abc27a9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8418797767302713298, guid: f443398771cf75f4abc997164949b491, type: 3}
     - target: {fileID: 2180859078937521908, guid: 804a667c053ab491a851a6d50abc27a9, type: 3}
       propertyPath: m_SortingOrder
       value: 3
@@ -4865,7 +4881,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.625, y: 1}
+    oldSize: {x: 0.375, y: 0.65625}
     newSize: {x: 0.625, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
