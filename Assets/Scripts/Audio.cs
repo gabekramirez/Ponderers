@@ -12,40 +12,56 @@ public class Audio : MonoBehaviour
     [HideInInspector] public bool isParent = true;
 
     // COMPONENTS
-    AudioSource audioSource;
+    private AudioSource audioSource;
 
-    public void play(float volume = -1.0f)
+    public void Play(AudioClip clip, float volume = -1.0f)
     {
-        if (volume == -1.0f) {volume = customVolume;}
+        if(audioSource == null)
+            audioSource = this.gameObject.transform.GetComponent<AudioSource>();
+
+        if (clip == null)
+        {
+            Debug.LogWarning("No AudioClip was provided.");
+            return;
+        }
+
+        if (volume == -1.0f)
+            volume = customVolume;
+
         if (stackAudio && isParent)
         {
-            Audio newAudioSource = Instantiate(this);
+            Audio newAudioSource = Instantiate(this, transform.position, transform.rotation);
+
             newAudioSource.customVolume = volume;
             newAudioSource.isParent = false;
-            newAudioSource.play(volume);
+            newAudioSource.Play(clip, volume);
         }
         else if (!audioSource.isPlaying)
         {
+
+            Debug.Log(volume);
+            audioSource.clip = clip;
+            audioSource.volume = volume;
             audioSource.Play();
         }
     }
 
-    public void setVolume(float volume)
+    public void SetVolume(float volume)
     {
         customVolume = volume;
+        audioSource.volume = volume;
     }
 
-    void Awake()
+    private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = this.gameObject.transform.GetComponent<AudioSource>();
     }
 
-    void Update()
+    private void Update()
     {
-        audioSource.volume = customVolume * SharedData.volumes[(int)audioType];
         if (!isParent && !audioSource.isPlaying)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }
