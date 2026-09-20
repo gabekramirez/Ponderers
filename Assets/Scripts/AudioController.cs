@@ -14,28 +14,45 @@ public class AudioController : MonoBehaviour
     private AudioClip bigWinSound;
     private GameObject audioPrefab;
 
-    public void RanAwake(){
-        audio = GameObject.Find("Audio").transform.GetComponent<Audio>();
+    void Awake(){
+        //Special case for MainMenu
+        int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
+        if(currentSceneIdx==0){
+            audioPrefab = Resources.Load<GameObject>("Audio");
+            audio = GameObject.Instantiate(audioPrefab).transform.GetComponent<Audio>();
+        }
+        InitializeSounds();
+    }
 
+    public void RanAwake(){
+        audio = GameObject.Find("Audio(Clone)").transform.GetComponent<Audio>();
+        
+        InitializeSounds();
+
+        GameObject.Find("Managers/LevelManager").transform.GetComponent<LevelManager>().audioController = this;
+    }
+
+    void InitializeSounds(){
         bigWinSound = Resources.Load<AudioClip>("SFX/win");
         clickSound = Resources.Load<AudioClip>("SFX/click");
         testSound = Resources.Load<AudioClip>("SFX/collect1");
 
         collectionSounds = new List<AudioClip>();
-        collectionSounds.Add(Resources.Load<AudioClip>("SFX/Collect1"));
+        // Make sure the capitalization matches your actual file names perfectly
+        collectionSounds.Add(Resources.Load<AudioClip>("SFX/Collect1")); 
         collectionSounds.Add(Resources.Load<AudioClip>("SFX/collect2"));
         collectionSounds.Add(Resources.Load<AudioClip>("SFX/collect3"));
-
-        GameObject.Find("Managers/LevelManager").transform.GetComponent<LevelManager>().audioController = this;
-
     }
 
     public void Add_ClickSound(){
         float volume = SharedData.volumes[1] * SharedData.masterVolume;
-        audio.Play(clickSound, volume);
+        Debug.Log(clickSound);
+        Debug.Log(volume);
+        audio.PlayForce(clickSound, volume);
     }
 
     public void Play_TestSound(float volume){
+        Debug.Log(testSound);
         audio.Play(testSound, volume);
     }
 

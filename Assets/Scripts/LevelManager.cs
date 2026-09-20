@@ -64,6 +64,11 @@ public class LevelManager : MonoBehaviour
         SkipOffer.SetActive(true);
 
         endPieceRenderer.sprite = ResourceAssets.GetLevelPiece(currentSceneIdx);
+
+        //Add button onClick sounds
+        GameObject.Find("Canvas/LevelEnd/Buttons/NextBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
+        GameObject.Find("Canvas/LevelEnd/Buttons/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
+        GameObject.Find("Canvas/TimeRunOut/ReplayButton").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
     }
 
     // Update is called once per frame
