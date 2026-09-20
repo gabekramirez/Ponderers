@@ -103,14 +103,14 @@ public class LevelManager : MonoBehaviour
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIdx = currentSceneIdx+1;
 
-        if(nextSceneIdx > LevelManager.SCENE_COUNT)
+       /* if(nextSceneIdx > LevelManager.SCENE_COUNT)
         {
-        }else{
+        }else{*/
             GameObject.Find("Canvas").SetActive(false);
             vignetteAnimator.SetActive(true);
             vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
             ExecuteAfterTime(1.5f, () => MoveScene(nextSceneIdx));
-        }
+        //}
     }
 
     public void MoveScene(int sceneIdx){

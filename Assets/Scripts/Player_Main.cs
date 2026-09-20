@@ -22,6 +22,11 @@ public class Player_Main : MonoBehaviour
     private Vector3 buffer_direction = Vector3.zero;
     private List<Door_Handler> doors = new List<Door_Handler>();
     private LevelManager levelManager;
+
+    [SerializeField] private Audio audio;
+    [SerializeField] private AudioClip walkClip;
+    [SerializeField] private AudioClip wallHitClip;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -73,12 +78,18 @@ public class Player_Main : MonoBehaviour
         {
             transform.position = new Vector3(rayHit.point.x, rayHit.point.y, 0f) - movement_vector * .5f;
             movement_vector = Vector3.zero;
+
+            // Play wall hit sound
+            audio.PlayForce(wallHitClip);
+
             if (input_frames < 10)
             {
                 movement_vector = buffer_direction;
             }
+
             collision_buffer_frames = 0;
-        }else if (rayHit && rayHit.collider.CompareTag("Finish"))
+        }
+        else if (rayHit && rayHit.collider.CompareTag("Finish"))
         {
             //trigger win here
             levelManager.AchieveVictory();
@@ -98,13 +109,24 @@ public class Player_Main : MonoBehaviour
 
         if (movement_vector.magnitude > 0f)
         {
-            s_render.sprite = movement_frames[Mathf.FloorToInt(sprite_anim_time) % movement_frames.Length];
+            s_render.sprite = movement_frames[
+                Mathf.FloorToInt(sprite_anim_time) % movement_frames.Length
+            ];
+
+            // Play walking sound
+            audio.PlayWalk(walkClip);
         }
         else if (collision_buffer_frames > 5)
         {
             s_render.sprite = still_frame;
             current_speed = 0f;
+
+            // Reset walk sound timer
+            audio.ResetWalkTimer();
         }
+
+
+
     }
     void FixedUpdate()
     {
