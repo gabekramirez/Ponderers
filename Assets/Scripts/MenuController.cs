@@ -17,8 +17,9 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Slider voicelineVolumeSlider;
     private AudioController audioController;
 
-    void Awake(){
+    void Start(){
         audioController = GameObject.Find("AudioController").transform.GetComponent<AudioController>();
+        ExecuteAfterTime(0.1f, () => MusicManager.Instance.PlayMusic("MainMenu"));
     }
 
     public void PlayGame(){
