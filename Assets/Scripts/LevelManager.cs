@@ -28,6 +28,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject LevelEndPanel;
     [SerializeField] private GameObject TimeOutPanel;
     [SerializeField] private GameObject SkipOffer;
+    [SerializeField] private GameObject explainerScreen;
+    public static bool shownInstructions = false;
 
     [Header("Animation")]
     [SerializeField] private GameObject vignetteAnimator;
@@ -39,7 +41,13 @@ public class LevelManager : MonoBehaviour
 
     //Called by Player_Main
     public void CalledStart(){
+
         //Initialization
+        if(explainerScreen != null)
+            explainerScreen.SetActive(true);
+        if(!LevelManager.shownInstructions)
+            timeRemainingTXT.gameObject.SetActive(false);
+
         inputTimeRemaining = 10f;
         LevelManager.SCENE_COUNT = 11;
         timeRanOut = false;
@@ -61,7 +69,7 @@ public class LevelManager : MonoBehaviour
         //Offer skip 
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int attempts = LevelManager.attemptsPerLevel[currentSceneIdx];
-        SkipOffer.SetActive(true);
+        SkipOffer.SetActive(attempts>0);
 
         endPieceRenderer.sprite = ResourceAssets.GetLevelPiece(currentSceneIdx);
 
@@ -74,8 +82,16 @@ public class LevelManager : MonoBehaviour
 
         canvas.transform.Find("LevelEnd/Buttons/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
         canvas.transform.Find("TimeRunOut/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
+        canvas.transform.Find("HowToPlay/CloseBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
     
         MusicManager.Instance.PlayMusic("Pondering");
+
+    }
+
+
+    public void SetInstructionsOff(){
+        LevelManager.shownInstructions = true;
+        timeRemainingTXT.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -88,7 +104,7 @@ public class LevelManager : MonoBehaviour
         }
 
         //Detect first input
-        if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame){
+        if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame && !LevelManager.shownInstructions){
             firstInputPut = true;
             //Switch the music
 
@@ -107,7 +123,7 @@ public class LevelManager : MonoBehaviour
             player.GetComponent<Player_Main>().enabled = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R) && !LevelManager.shownInstructions)
             ReplayLevel();
     }
 
