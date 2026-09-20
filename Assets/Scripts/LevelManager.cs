@@ -88,6 +88,7 @@ public class LevelManager : MonoBehaviour
     
         MusicManager.Instance.PlayMusic("Pondering");
 
+        vignetteAnimator.GetComponent<SpriteRenderer>().sortingOrder = 5;
     }
 
 
