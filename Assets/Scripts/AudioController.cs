@@ -8,6 +8,7 @@ public class AudioController : MonoBehaviour
     [Header("Audio Clips")]
     private AudioClip clickSound;
     private AudioClip testSound;
+    private AudioClip loseSound;
 
     [Header("Game Sounds")]
     private List<AudioClip> collectionSounds;
@@ -36,6 +37,7 @@ public class AudioController : MonoBehaviour
         bigWinSound = Resources.Load<AudioClip>("SFX/win");
         clickSound = Resources.Load<AudioClip>("SFX/click");
         testSound = Resources.Load<AudioClip>("SFX/collect1");
+        loseSound = Resources.Load<AudioClip>("SFX/lose");
 
         collectionSounds = new List<AudioClip>();
         // Make sure the capitalization matches your actual file names perfectly
@@ -77,5 +79,10 @@ public class AudioController : MonoBehaviour
     public void Play_WinShow(){
         float volume = SharedData.volumes[1] * SharedData.masterVolume;
         audio.Play(testSound, volume);
+    }
+
+    public void Play_LoseSound(){
+        float volume = SharedData.volumes[1] * SharedData.masterVolume;
+        audio.Play(loseSound, volume);
     }
 }

@@ -2266,6 +2266,9 @@ MonoBehaviour:
   - trackName: Pondering
     clip: {fileID: 8300000, guid: e8e44945364c59341b882a626c77aff3, type: 3}
     volume: 1
+  - trackName: Gameplay
+    clip: {fileID: 8300000, guid: 40dbc38857cc87f4d8214297e3690b37, type: 3}
+    volume: 1
 --- !u!1 &708856471
 GameObject:
   m_ObjectHideFlags: 0

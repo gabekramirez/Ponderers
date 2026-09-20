@@ -39,14 +39,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private SpriteRenderer endPieceRenderer;
 
+
     //Called by Player_Main
     public void CalledStart(){
 
         //Initialization
         if(explainerScreen != null)
             explainerScreen.SetActive(true);
-        if(!LevelManager.shownInstructions)
+        if(!LevelManager.shownInstructions){
             timeRemainingTXT.gameObject.SetActive(false);
+        }
 
         inputTimeRemaining = 10f;
         LevelManager.SCENE_COUNT = 11;
@@ -91,6 +93,7 @@ public class LevelManager : MonoBehaviour
 
     public void SetInstructionsOff(){
         LevelManager.shownInstructions = true;
+        Debug.Log(LevelManager.shownInstructions);
         timeRemainingTXT.gameObject.SetActive(true);
     }
 
@@ -104,12 +107,12 @@ public class LevelManager : MonoBehaviour
         }
 
         //Detect first input
-        if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame && !LevelManager.shownInstructions){
+        if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame && LevelManager.shownInstructions){
             firstInputPut = true;
             //Switch the music
 
             MusicManager.Instance.StopMusic();
-            //MusicManager.Instance.PlayMusic("Level2Music");
+            MusicManager.Instance.PlayMusic("Gameplay");
         }
 
         timeRemainingTXT.text = $"Time Remaining: {inputTimeRemaining.ToString("N0")}";
@@ -117,10 +120,11 @@ public class LevelManager : MonoBehaviour
         if(timeRanOut == false && firstInputPut == true && victoryComplete == false)
             inputTimeRemaining -= Time.deltaTime;
 
-        if(inputTimeRemaining <= 0f){
+        if(inputTimeRemaining <= 0f && !timeRanOut){
             timeRanOut = true;
             TimeOutPanel.SetActive(true);
             player.GetComponent<Player_Main>().enabled = false;
+            audioController.Play_LoseSound();
         }
 
         if(Input.GetKeyDown(KeyCode.R) && !LevelManager.shownInstructions)
