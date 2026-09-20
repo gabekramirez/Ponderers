@@ -211,13 +211,13 @@ public class CutsceneManager : MonoBehaviour
 
                 // frame 3
                 ExecuteAfterTime(7.5f, () => {
-                    PlayAudio(4);
+                    PlayAudio(3);
                     scene.ChangeSprite(2);
                 });
 
                 // frame 4
                 ExecuteAfterTime(8.5f, () => {
-                    PlayAudio(5);
+                    PlayAudio(4);
                     scene.ChangeSprite(3);
                 });
 
@@ -238,6 +238,7 @@ public class CutsceneManager : MonoBehaviour
 
     private void PlayAudio(int index)
     {
+        Debug.Log("FIND" + index.ToString());
         audio[index].Play(audio[index].gameObject.GetComponent<AudioSource>().clip);
     }
 
