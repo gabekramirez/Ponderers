@@ -18,13 +18,16 @@ public class Player_Main : MonoBehaviour
     private SpriteRenderer s_render;
     private float sprite_anim_time = 0f;
     private int input_frames = 0;
+    private int collision_buffer_frames = 0;
     private Vector3 buffer_direction = Vector3.zero;
     private List<Door_Handler> doors = new List<Door_Handler>();
+    private LevelManager levelManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         s_render = GetComponent<SpriteRenderer>();
         s_render.sprite = still_frame;
+        levelManager = GameObject.Find("Managers/LevelManager").GetComponent<LevelManager>();
         Object[] scene_items = FindObjectsByType<Door_Handler>();
         for (int i = 0; i < scene_items.Length; i++)
         {
@@ -43,7 +46,8 @@ public class Player_Main : MonoBehaviour
         if (input_vec.magnitude > 0f && movement_vector.magnitude == 0f)
         {
             movement_vector = new Vector3(input_vec.x, input_vec.y, 0f);
-        }else if (input_vec.magnitude > 0f)
+        }
+        else if (input_vec.magnitude > 0f)
         {
             input_frames = 0;
             buffer_direction = new Vector3(input_vec.x, input_vec.y, 0f);
@@ -69,9 +73,11 @@ public class Player_Main : MonoBehaviour
             {
                 movement_vector = buffer_direction;
             }
+            collision_buffer_frames = 0;
         }else if (rayHit && rayHit.collider.CompareTag("Finish"))
         {
             //trigger win here
+            levelManager.AchieveVictory();
         }else if (rayHit && rayHit.collider.CompareTag("Levers"))
         {
             
@@ -89,7 +95,7 @@ public class Player_Main : MonoBehaviour
         {
             s_render.sprite = movement_frames[Mathf.FloorToInt(sprite_anim_time) % movement_frames.Length];
         }
-        else
+        else if (collision_buffer_frames > 5)
         {
             s_render.sprite = still_frame;
             current_speed = 0f;
@@ -98,5 +104,6 @@ public class Player_Main : MonoBehaviour
     void FixedUpdate()
     {
         input_frames++;
+        collision_buffer_frames++;
     }
 }

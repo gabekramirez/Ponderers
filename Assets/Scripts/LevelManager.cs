@@ -42,7 +42,7 @@ public class LevelManager : MonoBehaviour
         timeRanOut = false;
         firstInputPut = false;
         victoryComplete = false;
-
+        vignetteAnimator.gameObject.SetActive(true);
         if(LevelManager.attemptsPerLevel == null){
             LevelManager.attemptsPerLevel = new List<int>();
             for(int i = 0; i < 25; i++){

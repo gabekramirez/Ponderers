@@ -143,8 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada232d474aac467f8ac4045f824ad40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  still_frame: {fileID: -8882251506033808833, guid: 30359e79988c742b0b4ac3767f20f509, type: 3}
-  movement_frames: []
+  still_frame: {fileID: -8418797767302713298, guid: f443398771cf75f4abc997164949b491, type: 3}
+  movement_frames:
+  - {fileID: -2303979636565211506, guid: f443398771cf75f4abc997164949b491, type: 3}
+  - {fileID: -8418797767302713298, guid: f443398771cf75f4abc997164949b491, type: 3}
 --- !u!114 &3369761772134428658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +174,6 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: df70fa95-8a34-4494-b137-73ab6b9c7d37
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
