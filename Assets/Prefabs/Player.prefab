@@ -151,6 +151,9 @@ MonoBehaviour:
   ray_mask:
     serializedVersion: 2
     m_Bits: 1
+  audioPrefab: {fileID: 50033420122514225, guid: 84e2d627aad587d4bbeb380d684a3393, type: 3}
+  walkClip: {fileID: 8300000, guid: c796664d07077724ca972dd06169d012, type: 3}
+  wallHitClip: {fileID: 8300000, guid: 11dff23c2986fe04b881e0a2fcb3173e, type: 3}
 --- !u!114 &3369761772134428658
 MonoBehaviour:
   m_ObjectHideFlags: 0

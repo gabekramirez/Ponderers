@@ -370,7 +370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 850, y: -59}
+  m_AnchoredPosition: {x: 1213, y: -108}
   m_SizeDelta: {x: 325, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329820633
@@ -2988,6 +2988,7 @@ MonoBehaviour:
   firstInputPut: 0
   victoryComplete: 0
   nextSceneName: Level_5
+  audioController: {fileID: 0}
   timeRemainingTXT: {fileID: 97896771}
   LevelEndPanel: {fileID: 1179460688}
   TimeOutPanel: {fileID: 1788681436}

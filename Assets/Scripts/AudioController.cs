@@ -4,14 +4,32 @@ using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviour
 {
-    [SerializeField] private Audio audio;
+    private Audio audio;
     [Header("Audio Clips")]
-    [SerializeField] private AudioClip clickSound;
-    [SerializeField] private AudioClip testSound;
+    private AudioClip clickSound;
+    private AudioClip testSound;
 
     [Header("Game Sounds")]
-    [SerializeField] private List<AudioClip> collectionSounds;
-    [SerializeField] private AudioClip bigWinSound;
+    private List<AudioClip> collectionSounds;
+    private AudioClip bigWinSound;
+    private GameObject audioPrefab;
+
+    public void RanAwake(){
+        audioPrefab = Resources.Load<GameObject>("Audio");
+        audio = GameObject.Instantiate(audioPrefab).transform.GetComponent<Audio>();
+
+        bigWinSound = Resources.Load<AudioClip>("SFX/win");
+        clickSound = Resources.Load<AudioClip>("SFX/click");
+        testSound = Resources.Load<AudioClip>("SFX/collect1");
+
+        collectionSounds = new List<AudioClip>();
+        collectionSounds.Add(Resources.Load<AudioClip>("SFX/Collect1"));
+        collectionSounds.Add(Resources.Load<AudioClip>("SFX/collect2"));
+        collectionSounds.Add(Resources.Load<AudioClip>("SFX/collect3"));
+
+        GameObject.Find("Managers/LevelManager").transform.GetComponent<LevelManager>().audioController = this;
+
+    }
 
     public void Add_ClickSound(){
         float volume = SharedData.volumes[1] * SharedData.masterVolume;
@@ -23,7 +41,6 @@ public class AudioController : MonoBehaviour
     }
 
     public void Play_CollectSound(){
-        Debug.Log("helloooo?");
         float bVol = 1f;
         if(SharedData.volumes != null)
             bVol = SharedData.volumes[1];
@@ -32,7 +49,7 @@ public class AudioController : MonoBehaviour
 
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         AudioClip soundClip = null;
-        if (currentSceneIdx%4!=0) //This needs to be checked once we have final scene
+        if (currentSceneIdx%5!=0) //This needs to be checked once we have final scene
             soundClip = collectionSounds[UnityEngine.Random.Range(0, collectionSounds.Count)];
         else
             soundClip = bigWinSound;

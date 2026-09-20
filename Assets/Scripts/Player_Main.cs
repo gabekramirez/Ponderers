@@ -24,9 +24,13 @@ public class Player_Main : MonoBehaviour
     private List<Door_Handler> doors = new List<Door_Handler>();
     private LevelManager levelManager;
     private ContactFilter2D contact_filter = new ContactFilter2D();
-    [SerializeField] private Audio audio;
-    [SerializeField] private AudioClip walkClip;
-    [SerializeField] private AudioClip wallHitClip;
+
+    [Header("Audio")]
+    private GameObject audioControllerPrefab;
+    private GameObject audioPrefab;
+    private Audio audio;
+    private AudioClip walkClip;
+    private AudioClip wallHitClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +44,15 @@ public class Player_Main : MonoBehaviour
         {
             doors.Add(scene_items[i] as Door_Handler);
         }
+
+        walkClip = Resources.Load<AudioClip>("SFX/walk");
+        wallHitClip = Resources.Load<AudioClip>("SFX/thud");
+
+        audioControllerPrefab = Resources.Load<GameObject>("AudioController");
+        GameObject.Instantiate(audioControllerPrefab).transform.GetComponent<AudioController>().RanAwake();
+        
+        audioPrefab = Resources.Load<GameObject>("Audio");
+        audio = GameObject.Instantiate(audioPrefab).transform.GetComponent<Audio>();
     }
 
     void OnMove(InputValue value)
@@ -118,7 +131,7 @@ public class Player_Main : MonoBehaviour
             ];
 
             // Play walking sound
-            audio.PlayWalk(walkClip);
+            audio.Play(walkClip, 0.5f);
         }
         else if (collision_buffer_frames > 5)
         {

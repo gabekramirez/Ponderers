@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     public static int SCENE_COUNT = 11;
     public static List<int> attemptsPerLevel;
 
-    [SerializeField] private AudioController audioController;
+    public AudioController audioController;
 
     [Header("UI Elements")]
     [SerializeField] private TMP_Text timeRemainingTXT;
