@@ -1,5 +1,41 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:Assets/Sound/SFX/click.wav.meta
+guid: e8e44945364c59341b882a626c77aff3
+========
 guid: 647a37cef85cd614592e693c252fa481
+>>>>>>>> Stashed changes:Assets/Sound/Music/ponder.wav.meta
+=======
+guid: 647a37cef85cd614592e693c252fa481
+>>>>>>> Stashed changes
+=======
+guid: 647a37cef85cd614592e693c252fa481
+>>>>>>> Stashed changes
+=======
+<<<<<<<< Updated upstream:Assets/Sound/SFX/ponder.wav.meta
+guid: b77a1602cc90aa14b818e316691104bc
+========
+guid: 647a37cef85cd614592e693c252fa481
+>>>>>>>> Stashed changes:Assets/Sound/Music/ponder.wav.meta
+>>>>>>> Stashed changes
+=======
+<<<<<<<< Updated upstream:Assets/Sound/SFX/timer.wav.meta
+<<<<<<<< Updated upstream:Assets/Sound/SFX/timer.wav.meta
+guid: cdfe8bda9f0be754db2f38f6eeed4a66
+========
+guid: d96123a91c34e9a43a4d81d959031960
+>>>>>>>> Stashed changes:Assets/Sound/SFX/click.wav.meta
+========
+guid: 647a37cef85cd614592e693c252fa481
+>>>>>>>> Stashed changes:Assets/Sound/Music/ponder.wav.meta
+>>>>>>> Stashed changes
+=======
+guid: 647a37cef85cd614592e693c252fa481
+>>>>>>> Stashed changes
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8

@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Mono.Cecil;
 using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class ItemHover : MonoBehaviour
