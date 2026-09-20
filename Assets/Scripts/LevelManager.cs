@@ -15,10 +15,10 @@ public class LevelManager : MonoBehaviour
     public bool timeRanOut = false;
     public bool firstInputPut = false;
     public bool victoryComplete = false;
-
+    float timeSpentPondering = 0f;
 
     public string nextSceneName;
-    public static int SCENE_COUNT = 2;
+    public static int SCENE_COUNT = 11;
     public static List<int> attemptsPerLevel;
 
     [Header("UI Elements")]
@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
     void Start(){
         //Initialization
         inputTimeRemaining = 10f;
-        LevelManager.SCENE_COUNT = 2;
+        LevelManager.SCENE_COUNT = 11;
         timeRanOut = false;
         firstInputPut = false;
         victoryComplete = false;
@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
         //Offer skip 
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int attempts = LevelManager.attemptsPerLevel[currentSceneIdx];
-        SkipOffer.SetActive(attempts>0);
+        SkipOffer.SetActive(true);
 
         endPieceRenderer.sprite = ResourceAssets.GetLevelPiece(currentSceneIdx);
     }
@@ -66,6 +66,12 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!victoryComplete && firstInputPut == false)
+            timeSpentPondering += Time.deltaTime;
+        if(timeSpentPondering >= 30f){
+            //Play a voice line to let them know about skip button
+        }
+
         //Detect first input
         if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
             firstInputPut = true;
@@ -80,6 +86,9 @@ public class LevelManager : MonoBehaviour
             TimeOutPanel.SetActive(true);
             player.GetComponent<Player_Main>().enabled = false;
         }
+
+        if(Input.GetKeyDown(KeyCode.R))
+            ReplayLevel();
     }
 
     public void AchieveVictory(){
