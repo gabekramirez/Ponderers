@@ -30,7 +30,6 @@ public class MovingSpike_Handler : MonoBehaviour
             progress = 1;
         }
         progress = (1 + Mathf.Sin(Mathf.PI * direction_mult * (0.5f - progress)))/2;
-        print(progress);
         transform.position = progress * position_offset + initial_position;
     }
 }

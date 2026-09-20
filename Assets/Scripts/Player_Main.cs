@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.U2D.Animation;
@@ -10,6 +9,7 @@ public class Player_Main : MonoBehaviour
 {
     public Sprite still_frame;
     public Sprite[] movement_frames;
+    public Player_Main player_copy;
 
     const float SPEED = 15.0f;
     const float ACCEL = 30.0f;
@@ -37,6 +37,10 @@ public class Player_Main : MonoBehaviour
 
     void OnMove(InputValue value)
     {
+        if (player_copy)
+        {
+            player_copy.OnMove(value);
+        }
         Vector2 input_vec = value.Get<Vector2>();
         if (Mathf.Abs(input_vec.x) > 0f && Mathf.Abs(input_vec.y) > 0f)
         {
@@ -88,7 +92,8 @@ public class Player_Main : MonoBehaviour
             }
         }else if (rayHit && rayHit.collider.CompareTag("Spikes"))
         {
-            //die player here
+            levelManager.inputTimeRemaining = 0f;
+            print("spike hit");
         }
 
         if (movement_vector.magnitude > 0f)
