@@ -96,15 +96,132 @@ public class CutsceneManager : MonoBehaviour
                 });
 
                 // end
-                ExecuteAfterTime(13f, () => {
+                ExecuteAfterTime(13.5f, () => {
                     vignetteAnimator.SetActive(true);
                     vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
                 });
-                ExecuteAfterTime(15f, () => {
+                ExecuteAfterTime(15.5f, () => {
                     SceneManager.LoadScene(nextSceneIdx);
                 });
                 break;
             case 2:
+                // frame 1
+                scene.enabled=true;
+                scene.GoTo(new Vector2(0f, 0f), 0.0f);
+                scene.ChangeSprite(0);
+                louie.Hide();
+                PlayAudio(0);
+
+                // topdown
+                ExecuteAfterTime(5f, () => {
+                    scene.ChangeSprite(1);
+                    camera.GoTo(new Vector2(-3f, 0), 0.0f);
+                    rightCover.GoTo(new Vector2(5f, 0), 0.0f);
+                    louie.GoTo(new Vector2(-1f, 0), 0.0f);
+                    louie.Flip();
+                    louieHouse.Show();
+                    louie.Show();
+                });
+
+                // pan camera
+                ExecuteAfterTime(5.5f, () => {
+                    PlayAudio(1);
+                    louie.Unflip();
+                    camera.GoTo(new Vector2(0, 0), 1.5f);
+                    rightCover.GoTo(new Vector2(10.75f, 0), 1.5f);
+                });
+
+                // frame 2
+                ExecuteAfterTime(12.9f, () => {
+                    louieHouse.Hide();
+                    louie.Hide();
+                    PlayAudio(2);
+                    scene.ChangeSprite(2);
+                });
+
+                // end
+                ExecuteAfterTime(17.5f, () => {
+                    vignetteAnimator.SetActive(true);
+                    vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
+                });
+                ExecuteAfterTime(19.5f, () => {
+                    SceneManager.LoadScene(nextSceneIdx);
+                });
+                break;
+            case 3:
+                // frame 1
+                scene.enabled=true;
+                scene.GoTo(new Vector2(0f, 0f), 0.0f);
+                scene.ChangeSprite(0);
+                louie.Hide();
+                PlayAudio(0);
+
+                // topdown
+                ExecuteAfterTime(5.5f, () => {
+                    scene.ChangeSprite(1);
+                    camera.GoTo(new Vector2(0, -2.5f), 0.0f);
+                    rightCover.GoTo(new Vector2(5f, 0), 0.0f);
+                    louie.GoTo(new Vector2(-1f, 0), 0.0f);
+                    louie.Flip();
+                    louieHouse.Show();
+                    louie.Show();
+                });
+
+                // pan camera
+                ExecuteAfterTime(6f, () => {
+                    PlayAudio(1);
+                    louie.Unflip();
+                    rightCover.GoTo(new Vector2(10.75f, 0), 1.5f);
+                });
+
+                // frame 2
+                ExecuteAfterTime(13.4f, () => {
+                    louieHouse.Hide();
+                    louie.Hide();
+                    PlayAudio(2);
+                    scene.ChangeSprite(2);
+                });
+
+                // end
+                ExecuteAfterTime(18f, () => {
+                    vignetteAnimator.SetActive(true);
+                    vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
+                });
+                ExecuteAfterTime(20f, () => {
+                    SceneManager.LoadScene(nextSceneIdx);
+                });
+                break;
+            case 4:
+                // frame 1
+                scene.enabled=true;
+                scene.GoTo(new Vector2(0f, 0f), 0.0f);
+                scene.ChangeSprite(0);
+                louie.Hide();
+                PlayAudio(0);
+
+                // frame 2
+                ExecuteAfterTime(1f, () => {
+                    PlayAudio(1);
+                    scene.ChangeSprite(1);
+                });
+
+                // frame 3
+                ExecuteAfterTime(2f, () => {
+                    PlayAudio(2);
+                    scene.ChangeSprite(2);
+                });
+
+                // frame 4
+                ExecuteAfterTime(3f, () => {
+                    PlayAudio(2);
+                    scene.ChangeSprite(3);
+                });
+
+                // frame 5
+                ExecuteAfterTime(4f, () => {
+                    PlayAudio(2);
+                    scene.ChangeSprite(4);
+                });
                 break;
         }
     }

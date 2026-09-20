@@ -9,11 +9,17 @@ public class CutsceneSprite : MonoBehaviour
     private Vector2 targetPosition;
     private float time = 1.0f;
     private float animationTime = 1.0f;
+    private float startScale;
     private SpriteRenderer spriteRenderer;
 
     public void ChangeSprite(int index)
     {
         spriteRenderer.sprite = sprites[index];
+    }
+
+    public void SetSize(float scale)
+    {
+        spriteRenderer.flipX = true;
     }
 
     public void Flip()
