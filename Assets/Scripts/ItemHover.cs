@@ -39,7 +39,6 @@ public class ItemHover : MonoBehaviour
         elapsed += Time.deltaTime;
 
         float frame_height = 1 - 2 * Mathf.Abs(1 - (elapsed - Mathf.Floor(elapsed)) * 2);
-        print(frame_height);
         frame_height = Mathf.Sin(frame_height * Mathf.PI/2) * MAX_OFFSET;
 
         transform.position = new Vector3(transform.position.x, initial_y + frame_height, 0f);

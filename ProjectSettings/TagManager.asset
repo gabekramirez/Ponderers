@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NonCollide
   - Levers
+  - Spikes
   layers:
   - Default
   - TransparentFX

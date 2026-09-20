@@ -59,7 +59,7 @@ public class Player_Main : MonoBehaviour
         current_speed = Mathf.Clamp(current_speed, 0f, SPEED);
         transform.position += movement_vector * current_speed * Time.deltaTime;
 
-        sprite_anim_time += Time.deltaTime * 4;
+        sprite_anim_time += Time.deltaTime * 8;
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, movement_vector, 0.5f);
         if (rayHit && rayHit.collider.CompareTag("Untagged"))
         {
@@ -80,6 +80,9 @@ public class Player_Main : MonoBehaviour
             {
                 doors[i].OnLever();
             }
+        }else if (rayHit && rayHit.collider.CompareTag("Spikes"))
+        {
+            //die player here
         }
 
         if (movement_vector.magnitude > 0f)
