@@ -1,23 +1,33 @@
+
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class Audio : MonoBehaviour
 {
     // EDITOR
-    public SharedData.GameAudioType audioType = SharedData.GameAudioType.SoundEffects;
-    [SerializeField] private bool stackAudio = false;
+    [SerializeField] private bool stackAudio = true;
+
+    [Header("Walk Sound")]
+    [SerializeField] private float walkSoundInterval = 0.4f;
 
     // CODE
     private float customVolume = 1.0f;
     [HideInInspector] public bool isParent = true;
 
+    private float walkTimer = 0f;
+
     // COMPONENTS
     private AudioSource audioSource;
 
-    public void Play(AudioClip clip, float volume = -1.0f)
+    void Awake(){
+        stackAudio = false;
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlayForce(AudioClip clip, float volume = -1.0f)
     {
-        if(audioSource == null)
-            audioSource = this.gameObject.transform.GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
 
         if (clip == null)
         {
@@ -30,7 +40,45 @@ public class Audio : MonoBehaviour
 
         if (stackAudio && isParent)
         {
-            Audio newAudioSource = Instantiate(this, transform.position, transform.rotation);
+            Audio newAudioSource = Instantiate(
+                this,
+                transform.position,
+                transform.rotation
+            );
+
+            newAudioSource.customVolume = volume;
+            newAudioSource.isParent = false;
+            newAudioSource.PlayForce(clip, volume);
+        }
+        else
+        {
+            audioSource.clip = clip;
+            audioSource.volume = volume;
+            audioSource.Play();
+        }
+    }
+
+    public void Play(AudioClip clip, float volume = -1.0f)
+    {
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+
+        if (clip == null)
+        {
+            Debug.LogWarning("No AudioClip was provided.");
+            return;
+        }
+
+        if (volume == -1.0f)
+            volume = customVolume;
+
+        if (stackAudio && isParent)
+        {
+            Audio newAudioSource = Instantiate(
+                this,
+                transform.position,
+                transform.rotation
+            );
 
             newAudioSource.customVolume = volume;
             newAudioSource.isParent = false;
@@ -38,24 +86,46 @@ public class Audio : MonoBehaviour
         }
         else if (!audioSource.isPlaying)
         {
-
-            Debug.Log(volume);
             audioSource.clip = clip;
             audioSource.volume = volume;
             audioSource.Play();
         }
     }
 
+    // WALK SOUND
+    public void PlayWalk(AudioClip walkClip, float volume = -1.0f)
+    {
+        walkTimer -= Time.deltaTime;
+
+        if (walkTimer > 0f)
+            return;
+
+        if (walkClip == null)
+        {
+            Debug.LogWarning("No walk AudioClip was provided.");
+            return;
+        }
+
+        // Reset timer
+        walkTimer = walkSoundInterval;
+
+        // Play footstep
+        Play(walkClip, volume);
+    }
+
+    public void ResetWalkTimer()
+    {
+        walkTimer = 0f;
+    }
+
     public void SetVolume(float volume)
     {
         customVolume = volume;
-        audioSource.volume = volume;
+
+        if (audioSource != null)
+            audioSource.volume = volume;
     }
 
-    private void Awake()
-    {
-        audioSource = this.gameObject.transform.GetComponent<AudioSource>();
-    }
 
     private void Update()
     {

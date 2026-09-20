@@ -147,6 +147,10 @@ MonoBehaviour:
   movement_frames:
   - {fileID: -2303979636565211506, guid: f443398771cf75f4abc997164949b491, type: 3}
   - {fileID: -8418797767302713298, guid: f443398771cf75f4abc997164949b491, type: 3}
+  player_copy: {fileID: 0}
+  ray_mask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &3369761772134428658
 MonoBehaviour:
   m_ObjectHideFlags: 0
