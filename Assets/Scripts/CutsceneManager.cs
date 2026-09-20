@@ -157,37 +157,41 @@ public class CutsceneManager : MonoBehaviour
                 PlayAudio(0);
 
                 // topdown
-                ExecuteAfterTime(5.5f, () => {
+                ExecuteAfterTime(3.5f, () => {
                     scene.ChangeSprite(1);
-                    camera.GoTo(new Vector2(0, -2.5f), 0.0f);
+                    camera.GoTo(new Vector2(-3f, -2.5f), 0.0f);
                     rightCover.GoTo(new Vector2(5f, 0), 0.0f);
-                    louie.GoTo(new Vector2(-1f, 0), 0.0f);
+                    louie.GoTo(new Vector2(-1f, -3f), 0.0f);
                     louie.Flip();
-                    louieHouse.Show();
                     louie.Show();
                 });
 
                 // pan camera
-                ExecuteAfterTime(6f, () => {
+                ExecuteAfterTime(4f, () => {
                     PlayAudio(1);
                     louie.Unflip();
-                    rightCover.GoTo(new Vector2(10.75f, 0), 1.5f);
+                    rightCover.GoTo(new Vector2(10.75f, 0), 1f);
+                    camera.GoTo(new Vector2(0, -2.5f), 1f);
+                });
+
+                ExecuteAfterTime(5f, () => {
+                    PlayAudio(1);
                 });
 
                 // frame 2
-                ExecuteAfterTime(13.4f, () => {
-                    louieHouse.Hide();
+                ExecuteAfterTime(7.5f, () => {
+                    camera.GoTo(new Vector2(0, 0), 0.0f);
                     louie.Hide();
                     PlayAudio(2);
                     scene.ChangeSprite(2);
                 });
 
                 // end
-                ExecuteAfterTime(18f, () => {
+                ExecuteAfterTime(15.5f, () => {
                     vignetteAnimator.SetActive(true);
                     vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
                 });
-                ExecuteAfterTime(20f, () => {
+                ExecuteAfterTime(17.5f, () => {
                     SceneManager.LoadScene(nextSceneIdx);
                 });
                 break;
@@ -200,27 +204,33 @@ public class CutsceneManager : MonoBehaviour
                 PlayAudio(0);
 
                 // frame 2
-                ExecuteAfterTime(1f, () => {
+                ExecuteAfterTime(4.5f, () => {
                     PlayAudio(1);
                     scene.ChangeSprite(1);
                 });
 
                 // frame 3
-                ExecuteAfterTime(2f, () => {
-                    PlayAudio(2);
+                ExecuteAfterTime(7.5f, () => {
+                    PlayAudio(4);
                     scene.ChangeSprite(2);
                 });
 
                 // frame 4
-                ExecuteAfterTime(3f, () => {
-                    PlayAudio(2);
+                ExecuteAfterTime(8.5f, () => {
+                    PlayAudio(5);
                     scene.ChangeSprite(3);
                 });
 
                 // frame 5
-                ExecuteAfterTime(4f, () => {
+                ExecuteAfterTime(9.5f, () => {
                     PlayAudio(2);
                     scene.ChangeSprite(4);
+                });
+
+                // end
+                ExecuteAfterTime(17f, () => {
+                    vignetteAnimator.SetActive(true);
+                    vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
                 });
                 break;
         }

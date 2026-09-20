@@ -480,7 +480,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[0].end_delay
@@ -488,11 +488,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[1].end_delay
-      value: 2.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[2].end_delay
-      value: 2.35
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
+      propertyPath: texts.Array.data[3].end_delay
+      value: 3.05
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[0].text_segment
@@ -500,11 +504,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[1].text_segment
-      value: He made it gold!? ... He made it gold.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[2].text_segment
-      value: Once more unto the House factory! Onward!
+      value: He made it gold!? .......... He made it gold.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
+      propertyPath: texts.Array.data[3].text_segment
+      value: Once more to the House factory! Got to beat that damn beaver.
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[0].time_per_letter
@@ -516,6 +524,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[2].time_per_letter
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
+      propertyPath: texts.Array.data[3].time_per_letter
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3290771840416650775, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
