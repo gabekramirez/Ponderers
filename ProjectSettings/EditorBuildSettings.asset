@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 078c9de14d73a214eb7682411ef6c46f
   - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene0.unity
+    guid: c9af800d003a442439ab69d5a6d13d5a
+  - enabled: 1
     path: Assets/Scenes/Levels/Level_0.unity
     guid: d59e27c932e07ce4fa7308aa538816de
   - enabled: 1
@@ -21,10 +24,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level_3.unity
     guid: 14112a126b16a074387ac81d6b989ad6
   - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene1.unity
+    guid: be6cdf79a104e404ca8f42a1a9326cb0
+  - enabled: 1
     path: Assets/Scenes/Levels/Level_4.unity
     guid: 050549c32cd0440b788a8f1dc8166fb8
   - enabled: 1
     path: Assets/Scenes/Levels/Level_5.unity
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     guid: e47bd8c48b2944bc4ac186f6cdca1453
   - enabled: 1
     path: Assets/Scenes/Levels/Level_6.unity
@@ -47,5 +56,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level_12.unity
     guid: 3a195c642d887471189355eadcd686b4
+=======
+    guid: 3c20560c68f5e47008cf96888f4196a6
+>>>>>>> Stashed changes
+=======
+    guid: 3c20560c68f5e47008cf96888f4196a6
+>>>>>>> Stashed changes
+=======
+    guid: 3c20560c68f5e47008cf96888f4196a6
+>>>>>>> Stashed changes
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

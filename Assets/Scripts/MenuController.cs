@@ -34,7 +34,6 @@ public class MenuController : MonoBehaviour
     public void SetMasterVolume(){
         SharedData.masterVolume = masterVolumeSlider.value;
         audioController.Play_TestSound(SharedData.masterVolume);
-
     }
 
     public void SetMusicVolume(){
