@@ -15,6 +15,11 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
     [SerializeField] private Slider voicelineVolumeSlider;
+    private AudioController audioController;
+
+    void Awake(){
+        audioController = GameObject.Find("AudioController").transform.GetComponent<AudioController>();
+    }
 
     public void PlayGame(){
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
@@ -28,18 +33,28 @@ public class MenuController : MonoBehaviour
 
     public void SetMasterVolume(){
         SharedData.masterVolume = masterVolumeSlider.value;
+        audioController.Play_TestSound(SharedData.masterVolume);
+
     }
 
     public void SetMusicVolume(){
-
-    }
+        //Set the volume
+        SharedData.volumes[0] = musicVolumeSlider.value;
+        float musicVol =  SharedData.volumes[(int)SharedData.GameAudioType.Music] * SharedData.masterVolume;
+        audioController.Play_TestSound(musicVol);
+    }   
 
     public void SetSFXVolume(){
-
+        //Set the volume
+        SharedData.volumes[1] = sfxVolumeSlider.value;
+        float musicVol =  SharedData.volumes[(int)SharedData.GameAudioType.SoundEffects] * SharedData.masterVolume;
+        audioController.Play_TestSound(musicVol);
     }
 
     public void SetVoicelineVolume(){
-
+        SharedData.volumes[2] = sfxVolumeSlider.value;
+        float musicVol =  SharedData.volumes[(int)SharedData.GameAudioType.Voicelines] * SharedData.masterVolume;
+        audioController.Play_TestSound(musicVol);
     }
 
     public void QuitGame(){

@@ -19,6 +19,7 @@ public class SharedData : MonoBehaviour
     void Awake()
     {
         SharedData.volumes = new List<float>();
+        SharedData.masterVolume = 1f;
 
         // VOLUME
         for (int i = 0; i < Enum.GetNames(typeof(GameAudioType)).Length; i++)

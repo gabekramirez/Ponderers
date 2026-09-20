@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    [SerializeField] private GameObject audioPrefab;
+    [SerializeField] private Audio audio;
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip clickSound;
+    [SerializeField] private AudioClip testSound;
 
     public void Add_ClickSound(){
-        GameObject newAudio = Instantiate(audioPrefab);
-        Audio audioComp = newAudio.transform.GetComponent<Audio>();
+        float volume = SharedData.volumes[(int)audio.audioType] * SharedData.masterVolume;
+        audio.Play(clickSound, volume);
+    }
 
-        float volume = SharedData.volumes[(int)audioComp.audioType] * SharedData.masterVolume;
-        audioComp.play();
+    public void Play_TestSound(float volume){
+        audio.Play(testSound, volume);
     }
 }
