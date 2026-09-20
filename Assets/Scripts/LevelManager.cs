@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
     public static int SCENE_COUNT = 11;
     public static List<int> attemptsPerLevel;
 
+    [SerializeField] private AudioController audioController;
+
     [Header("UI Elements")]
     [SerializeField] private TMP_Text timeRemainingTXT;
     [SerializeField] private GameObject LevelEndPanel;
@@ -34,6 +36,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform louieStart;
     [SerializeField] private Transform player;
     [SerializeField] private SpriteRenderer endPieceRenderer;
+
 
     void Start(){
         //Initialization
@@ -95,6 +98,9 @@ public class LevelManager : MonoBehaviour
         victoryComplete = true;
         LevelEndPanel.SetActive(true);
 
+        audioController.Play_CollectSound();
+
+
         player.GetComponent<Player_Main>().enabled = false;
     }
 
@@ -103,14 +109,14 @@ public class LevelManager : MonoBehaviour
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIdx = currentSceneIdx+1;
 
-        if(nextSceneIdx > LevelManager.SCENE_COUNT)
+       /* if(nextSceneIdx > LevelManager.SCENE_COUNT)
         {
-        }else{
+        }else{*/
             GameObject.Find("Canvas").SetActive(false);
             vignetteAnimator.SetActive(true);
             vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
             ExecuteAfterTime(1.5f, () => MoveScene(nextSceneIdx));
-        }
+        //}
     }
 
     public void MoveScene(int sceneIdx){
