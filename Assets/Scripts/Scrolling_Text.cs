@@ -43,7 +43,5 @@ public class Scrolling_Text : MonoBehaviour
             elapsed = 0f;
             current_text_int++;
         }
-        print(elapsed);
-        print(max_time + current_text.end_delay);
     }
 }
