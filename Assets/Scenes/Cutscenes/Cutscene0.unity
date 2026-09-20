@@ -1131,19 +1131,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.size
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
+      propertyPath: texts.Array.data[0].end_delay
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[1].end_delay
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
+      propertyPath: texts.Array.data[2].end_delay
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[0].text_segment
-      value: Intro here biatch
+      value: "When out on a walk, Louie the Lumberjack saw an empty plot and thought, \u201CI should build my house there!\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[1].text_segment
-      value: Intro here biatch b ut more
+      value: Fortunately, Louie is very smart and he knows where houses come from. The house factory! (Of course)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
+      propertyPath: texts.Array.data[2].text_segment
+      value: So Louie set off for the House Factory!
       objectReference: {fileID: 0}
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[0].time_per_letter
@@ -1152,6 +1164,14 @@ PrefabInstance:
     - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: texts.Array.data[1].time_per_letter
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409238942735022213, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
+      propertyPath: texts.Array.data[2].time_per_letter
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290771840416650775, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6606114369297385287, guid: 8235eb4b04a404aee9761887eab264ec, type: 3}
       propertyPath: m_Pivot.x
