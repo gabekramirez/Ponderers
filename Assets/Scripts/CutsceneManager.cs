@@ -194,6 +194,7 @@ public class CutsceneManager : MonoBehaviour
                 ExecuteAfterTime(17.5f, () => {
                     SceneManager.LoadScene(nextSceneIdx);
                 });
+
                 break;
             case 4:
                 // frame 1
@@ -232,6 +233,11 @@ public class CutsceneManager : MonoBehaviour
                     vignetteAnimator.SetActive(true);
                     vignetteAnimator.transform.GetComponent<Animator>().SetTrigger("SwapAnimation");
                 });
+
+                ExecuteAfterTime(19.5f, () => {
+                    SceneManager.LoadScene(0);
+                });
+
                 break;
         }
     }

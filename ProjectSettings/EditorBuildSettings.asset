@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: c9af800d003a442439ab69d5a6d13d5a
   - enabled: 1
     path: Assets/Scenes/Levels/Level_0.unity
-    guid: d59e27c932e07ce4fa7308aa538816de
+    guid: 221ee79720e66b541b03f0600733ec74
   - enabled: 1
     path: Assets/Scenes/Levels/Level_1.unity
     guid: 28cbae60b41f87e47af54053d4fef790
@@ -60,7 +60,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level_12.unity
     guid: 3a195c642d887471189355eadcd686b4
   - enabled: 1
-<<<<<<< Updated upstream
     path: Assets/Scenes/Levels/Level_13.unity
     guid: 93fa8643e455c4dbcb8f11440f1a6547
   - enabled: 1
@@ -69,9 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level_15.unity
     guid: 4fd80b6b6dc7941558623a18f872cb81
-=======
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/Cutscene4.unity
     guid: 33c8c2572f8395a4693d5b90067f8dcf
->>>>>>> Stashed changes
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_configObjects: {}
