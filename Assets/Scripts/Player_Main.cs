@@ -49,10 +49,12 @@ public class Player_Main : MonoBehaviour
         wallHitClip = Resources.Load<AudioClip>("SFX/thud");
 
         audioControllerPrefab = Resources.Load<GameObject>("AudioController");
-        GameObject.Instantiate(audioControllerPrefab).transform.GetComponent<AudioController>().RanAwake();
-        
+
         audioPrefab = Resources.Load<GameObject>("Audio");
         audio = GameObject.Instantiate(audioPrefab).transform.GetComponent<Audio>();
+
+        GameObject.Instantiate(audioControllerPrefab).transform.GetComponent<AudioController>().RanAwake();
+        
     }
 
     void OnMove(InputValue value)

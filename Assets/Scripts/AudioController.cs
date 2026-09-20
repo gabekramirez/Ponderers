@@ -15,8 +15,7 @@ public class AudioController : MonoBehaviour
     private GameObject audioPrefab;
 
     public void RanAwake(){
-        audioPrefab = Resources.Load<GameObject>("Audio");
-        audio = GameObject.Instantiate(audioPrefab).transform.GetComponent<Audio>();
+        audio = GameObject.Find("Audio").transform.GetComponent<Audio>();
 
         bigWinSound = Resources.Load<AudioClip>("SFX/win");
         clickSound = Resources.Load<AudioClip>("SFX/click");
