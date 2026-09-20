@@ -23,6 +23,8 @@ public class MenuController : MonoBehaviour
     }
 
     public void PlayGame(){
+        MusicManager.Instance.StopMusic();
+
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIdx = currentSceneIdx+1;
 

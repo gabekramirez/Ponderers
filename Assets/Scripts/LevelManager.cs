@@ -74,6 +74,8 @@ public class LevelManager : MonoBehaviour
 
         canvas.transform.Find("LevelEnd/Buttons/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
         canvas.transform.Find("TimeRunOut/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
+    
+        MusicManager.Instance.PlayMusic("Pondering");
     }
 
     // Update is called once per frame
@@ -86,8 +88,13 @@ public class LevelManager : MonoBehaviour
         }
 
         //Detect first input
-        if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
+        if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame){
             firstInputPut = true;
+            //Switch the music
+
+            MusicManager.Instance.StopMusic();
+            //MusicManager.Instance.PlayMusic("Level2Music");
+        }
 
         timeRemainingTXT.text = $"Time Remaining: {inputTimeRemaining.ToString("N0")}";
 
