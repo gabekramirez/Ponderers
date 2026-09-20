@@ -26,4 +26,8 @@ public class SharedData : MonoBehaviour
         }
 
     }
+
+    public void ChangeVolume(enum GameAudioType){
+        //GameAudioType.
+    }
 }
