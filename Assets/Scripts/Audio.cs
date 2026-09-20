@@ -4,7 +4,7 @@ using UnityEngine;
 public class Audio : MonoBehaviour
 {
     // EDITOR
-    [SerializeField] private SharedData.GameAudioType audioType = SharedData.GameAudioType.SoundEffects;
+    public SharedData.GameAudioType audioType = SharedData.GameAudioType.SoundEffects;
     [SerializeField] private bool stackAudio = false;
 
     // CODE

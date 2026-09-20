@@ -10,6 +10,12 @@ public class MenuController : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private GameObject vignetteAnimator;
 
+    [Header("Audio Sliders")]
+    [SerializeField] private Slider masterVolumeSlider;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider sfxVolumeSlider;
+    [SerializeField] private Slider voicelineVolumeSlider;
+
     public void PlayGame(){
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIdx = currentSceneIdx+1;
@@ -20,6 +26,21 @@ public class MenuController : MonoBehaviour
         ExecuteAfterTime(1.5f, () => MoveScene(nextSceneIdx));
     }
 
+    public void SetMasterVolume(){
+        SharedData.masterVolume = masterVolumeSlider.value;
+    }
+
+    public void SetMusicVolume(){
+
+    }
+
+    public void SetSFXVolume(){
+
+    }
+
+    public void SetVoicelineVolume(){
+
+    }
 
     public void QuitGame(){
         Application.Quit();
