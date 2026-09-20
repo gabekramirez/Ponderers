@@ -126,7 +126,8 @@ public class Player_Main : MonoBehaviour
             }
         }else if (rayHit && rayHit.collider.CompareTag("Spikes") && levelManager.victoryComplete == false)
         {
-            levelManager.inputTimeRemaining = 0f;
+            print("hit spike");
+            levelManager.inputTimeRemaining = -1f;
             
             audioController.Play_DeathVoiceline();
         }

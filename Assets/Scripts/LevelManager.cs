@@ -136,6 +136,7 @@ public class LevelManager : MonoBehaviour
             inputTimeRemaining -= Time.deltaTime;
 
         if(inputTimeRemaining <= 0f && !timeRanOut){
+            print("levle manager end");
             timeRanOut = true;
             TimeOutPanel.SetActive(true);
             player.GetComponent<Player_Main>().enabled = false;

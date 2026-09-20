@@ -5663,10 +5663,13 @@ MonoBehaviour:
   LevelEndPanel: {fileID: 1179460688}
   TimeOutPanel: {fileID: 1788681436}
   SkipOffer: {fileID: 329820631}
+  explainerScreen: {fileID: 0}
   vignetteAnimator: {fileID: 1925647475}
   louieStart: {fileID: 1390870460}
   player: {fileID: 1390870460}
   endPieceRenderer: {fileID: 1247798327}
+  playPonderMusic: 1
+  playGameplayMusic: 0
 --- !u!1 &1179460688
 GameObject:
   m_ObjectHideFlags: 0
@@ -5909,6 +5912,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7631070037750196515, guid: 6bc2ff537fc214ea5837117f48600657, type: 3}
       propertyPath: itemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631070037750196515, guid: 6bc2ff537fc214ea5837117f48600657, type: 3}
+      propertyPath: item_type
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

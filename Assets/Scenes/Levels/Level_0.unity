@@ -2123,6 +2123,8 @@ MonoBehaviour:
   louieStart: {fileID: 72940139}
   player: {fileID: 1502060366}
   endPieceRenderer: {fileID: 1657238629}
+  playPonderMusic: 1
+  playGameplayMusic: 0
 --- !u!1 &449536853
 GameObject:
   m_ObjectHideFlags: 0
