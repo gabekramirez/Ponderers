@@ -3415,6 +3415,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 505174690}
     m_Modifications:
+    - target: {fileID: 1645315710807248373, guid: 804a667c053ab491a851a6d50abc27a9, type: 3}
+      propertyPath: ray_mask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2422824307166209607, guid: 804a667c053ab491a851a6d50abc27a9, type: 3}
       propertyPath: m_Name
       value: Player

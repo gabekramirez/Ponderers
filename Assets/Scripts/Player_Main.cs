@@ -10,6 +10,7 @@ public class Player_Main : MonoBehaviour
     public Sprite still_frame;
     public Sprite[] movement_frames;
     public Player_Main player_copy;
+    public LayerMask ray_mask = 3;
 
     const float SPEED = 15.0f;
     const float ACCEL = 30.0f;
@@ -22,9 +23,12 @@ public class Player_Main : MonoBehaviour
     private Vector3 buffer_direction = Vector3.zero;
     private List<Door_Handler> doors = new List<Door_Handler>();
     private LevelManager levelManager;
+    private ContactFilter2D contact_filter = new ContactFilter2D();
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        contact_filter.SetLayerMask((LayerMask)0);
         s_render = GetComponent<SpriteRenderer>();
         s_render.sprite = still_frame;
         levelManager = GameObject.Find("Managers/LevelManager").GetComponent<LevelManager>();
@@ -37,6 +41,7 @@ public class Player_Main : MonoBehaviour
 
     void OnMove(InputValue value)
     {
+        
         if (player_copy)
         {
             player_copy.OnMove(value);
@@ -68,8 +73,9 @@ public class Player_Main : MonoBehaviour
         transform.position += movement_vector * current_speed * Time.deltaTime;
 
         sprite_anim_time += Time.deltaTime * 8;
-        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, movement_vector, 0.5f);
-        if (rayHit && rayHit.collider.CompareTag("Untagged"))
+        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, movement_vector, 0.5f, ray_mask);
+        
+        if (rayHit && rayHit.collider.CompareTag("Untagged") && rayHit.collider != gameObject)
         {
             transform.position = new Vector3(rayHit.point.x, rayHit.point.y, 0f) - movement_vector * .5f;
             movement_vector = Vector3.zero;
@@ -90,7 +96,7 @@ public class Player_Main : MonoBehaviour
             {
                 doors[i].OnLever();
             }
-        }else if (rayHit && rayHit.collider.CompareTag("Spikes"))
+        }else if (rayHit && rayHit.collider.CompareTag("Spikes") && levelManager.victoryComplete == false)
         {
             levelManager.inputTimeRemaining = 0f;
             print("spike hit");
