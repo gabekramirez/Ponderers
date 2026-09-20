@@ -26,6 +26,8 @@ public class SharedData : MonoBehaviour
         {
             SharedData.volumes.Add(1.0f);
         }
+
+        SharedData.volumes[1] = 0.5f;
     }
 
     public void ChangeVolume(int volumeIdx, float volume){

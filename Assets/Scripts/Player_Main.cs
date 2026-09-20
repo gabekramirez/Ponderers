@@ -53,7 +53,10 @@ public class Player_Main : MonoBehaviour
         audioPrefab = Resources.Load<GameObject>("Audio");
         audio = GameObject.Instantiate(audioPrefab).transform.GetComponent<Audio>();
 
-        GameObject.Instantiate(audioControllerPrefab).transform.GetComponent<AudioController>().RanAwake();
+        AudioController audioController = Instantiate(audioControllerPrefab).transform.GetComponent<AudioController>();
+        audioController.RanAwake();
+        levelManager.audioController = audioController;
+        levelManager.CalledStart();
         
     }
 

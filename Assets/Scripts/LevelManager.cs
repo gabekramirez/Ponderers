@@ -37,8 +37,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private SpriteRenderer endPieceRenderer;
 
-
-    void Start(){
+    //Called by Player_Main
+    public void CalledStart(){
         //Initialization
         inputTimeRemaining = 10f;
         LevelManager.SCENE_COUNT = 11;
@@ -66,9 +66,14 @@ public class LevelManager : MonoBehaviour
         endPieceRenderer.sprite = ResourceAssets.GetLevelPiece(currentSceneIdx);
 
         //Add button onClick sounds
-        GameObject.Find("Canvas/LevelEnd/Buttons/NextBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
-        GameObject.Find("Canvas/LevelEnd/Buttons/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
-        GameObject.Find("Canvas/TimeRunOut/ReplayButton").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
+        //Inactive is killing us
+        GameObject canvas = GameObject.Find("Canvas");
+        Button button1 = canvas.transform.Find("LevelEnd/Buttons/NextBTN").GetComponent<Button>();
+        button1.onClick.AddListener(() => audioController.Add_ClickSound());
+
+
+        canvas.transform.Find("LevelEnd/Buttons/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
+        canvas.transform.Find("TimeRunOut/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
     }
 
     // Update is called once per frame
