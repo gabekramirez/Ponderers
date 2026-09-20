@@ -5219,7 +5219,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.46226418, g: 0.23645605, b: 0.15045391, a: 1}
   m_Origin: {x: -9, y: -4, z: 0}
   m_Size: {x: 18, y: 9, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -6123,6 +6123,7 @@ MonoBehaviour:
   LevelEndPanel: {fileID: 1179460688}
   TimeOutPanel: {fileID: 1788681436}
   SkipOffer: {fileID: 329820631}
+  explainerScreen: {fileID: 0}
   vignetteAnimator: {fileID: 1925647475}
   louieStart: {fileID: 1390870460}
   player: {fileID: 1390870460}

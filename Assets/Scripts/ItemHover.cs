@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System;
+using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class ItemHover : MonoBehaviour
@@ -10,6 +12,13 @@ public class ItemHover : MonoBehaviour
         WINDOW,
         ROOF
     }
+    public int item_type = 0;
+    private string[] item_types = {
+        "Wood",
+        "Silver",
+        "Gold",
+        "Wreck"
+    };
     public Pickup_Type itemType = Pickup_Type.DOOR;
     private float elapsed;
     private float initial_y = 0f;
@@ -20,10 +29,11 @@ public class ItemHover : MonoBehaviour
     {
         s_renderer = GetComponent<SpriteRenderer>();
         initial_y = transform.position.y;
-        sprite_list.Add(Resources.Load<Sprite>("WoodDoor"));
-        sprite_list.Add(Resources.Load<Sprite>("WoodWall"));
-        sprite_list.Add(Resources.Load<Sprite>("WoodWindow"));
-        sprite_list.Add(Resources.Load<Sprite>("WoodRoof"));
+
+        sprite_list.Add(Resources.Load<Sprite>(item_types[item_type] + "Door"));
+        sprite_list.Add(Resources.Load<Sprite>(item_types[item_type] + "Wall"));
+        sprite_list.Add(Resources.Load<Sprite>(item_types[item_type] + "Window"));
+        sprite_list.Add(Resources.Load<Sprite>(item_types[item_type] + "Roof"));
         s_renderer.sprite = sprite_list[(int)itemType];
 
     }
