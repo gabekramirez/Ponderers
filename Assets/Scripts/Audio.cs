@@ -5,7 +5,7 @@ using UnityEngine;
 public class Audio : MonoBehaviour
 {
     // EDITOR
-    [SerializeField] private bool stackAudio = false;
+    [SerializeField] private bool stackAudio = true;
 
     [Header("Walk Sound")]
     [SerializeField] private float walkSoundInterval = 0.4f;
@@ -18,6 +18,11 @@ public class Audio : MonoBehaviour
 
     // COMPONENTS
     private AudioSource audioSource;
+
+    void Awake(){
+        stackAudio = false;
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void PlayForce(AudioClip clip, float volume = -1.0f)
     {
@@ -121,10 +126,6 @@ public class Audio : MonoBehaviour
             audioSource.volume = volume;
     }
 
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
 
     private void Update()
     {

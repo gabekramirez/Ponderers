@@ -963,6 +963,7 @@ MonoBehaviour:
   firstInputPut: 0
   victoryComplete: 0
   nextSceneName: 
+  audioController: {fileID: 2110028609}
   timeRemainingTXT: {fileID: 945376602}
   LevelEndPanel: {fileID: 304636796}
   TimeOutPanel: {fileID: 1341381485}
@@ -6523,8 +6524,6 @@ MonoBehaviour:
   audio: {fileID: 87301662}
   clickSound: {fileID: 8300000, guid: d96123a91c34e9a43a4d81d959031960, type: 3}
   testSound: {fileID: 8300000, guid: 62db5b29338165042b6e7ed15947fd41, type: 3}
-  wallHitSound: {fileID: 8300000, guid: 11dff23c2986fe04b881e0a2fcb3173e, type: 3}
-  walkingSound: {fileID: 8300000, guid: c796664d07077724ca972dd06169d012, type: 3}
   collectionSounds:
   - {fileID: 8300000, guid: 62db5b29338165042b6e7ed15947fd41, type: 3}
   - {fileID: 8300000, guid: 703483abb074d0c4c890ca4f77573c65, type: 3}
