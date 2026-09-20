@@ -16,10 +16,15 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Slider sfxVolumeSlider;
     [SerializeField] private Slider voicelineVolumeSlider;
     private AudioController audioController;
+    bool allowMenuMusic;
 
     void Start(){
         audioController = GameObject.Find("AudioController").transform.GetComponent<AudioController>();
-        ExecuteAfterTime(0.1f, () => MusicManager.Instance.PlayMusic("MainMenu"));
+        ExecuteAfterTime(0.1f, () => SetMenuMusic());
+    }
+
+    public void SetMenuMusic(){
+        allowMenuMusic = true;
     }
 
     public void PlayGame(){
@@ -78,4 +83,8 @@ public class MenuController : MonoBehaviour
         action?.Invoke();
     }
 
+    void Update(){
+        if(allowMenuMusic)
+            MusicManager.Instance.PlayMusic("MainMenu");
+    }
 }

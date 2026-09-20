@@ -127,7 +127,7 @@ public class LevelManager : MonoBehaviour
             audioController.Play_LoseSound();
         }
 
-        if(Input.GetKeyDown(KeyCode.R) && !LevelManager.shownInstructions)
+        if(Input.GetKeyDown(KeyCode.R) && LevelManager.shownInstructions)
             ReplayLevel();
     }
 
