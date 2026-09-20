@@ -15,6 +15,10 @@ public class AudioController : MonoBehaviour
     private AudioClip bigWinSound;
     private GameObject audioPrefab;
 
+    [Header("Voicelines")]
+    private List<AudioClip> deathSoundClips;
+    private List<AudioClip> skipPrompts;
+
     void Awake(){
         //Special case for MainMenu
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
@@ -44,6 +48,23 @@ public class AudioController : MonoBehaviour
         collectionSounds.Add(Resources.Load<AudioClip>("SFX/Collect1")); 
         collectionSounds.Add(Resources.Load<AudioClip>("SFX/collect2"));
         collectionSounds.Add(Resources.Load<AudioClip>("SFX/collect3"));
+
+        //Add the death sounds
+        deathSoundClips = new List<AudioClip>();
+        deathSoundClips.Add(Resources.Load<AudioClip>("Archive/Death1"));
+        deathSoundClips.Add(Resources.Load<AudioClip>("Archive/Death2"));
+        deathSoundClips.Add(Resources.Load<AudioClip>("Archive/Death3"));
+        deathSoundClips.Add(Resources.Load<AudioClip>("Archive/Death4"));
+        deathSoundClips.Add(Resources.Load<AudioClip>("Archive/Death5"));
+        deathSoundClips.Add(Resources.Load<AudioClip>("Archive/Death6"));
+
+        //Add the skip sounds
+        skipPrompts = new List<AudioClip>();
+        skipPrompts.Add(Resources.Load<AudioClip>("Archive/Skip1"));
+        skipPrompts.Add(Resources.Load<AudioClip>("Archive/Skip2"));
+        skipPrompts.Add(Resources.Load<AudioClip>("Archive/Skip3"));
+        skipPrompts.Add(Resources.Load<AudioClip>("Archive/Skip4"));
+
     }
 
     public void Add_ClickSound(){
@@ -84,5 +105,26 @@ public class AudioController : MonoBehaviour
     public void Play_LoseSound(){
         float volume = SharedData.volumes[1] * SharedData.masterVolume;
         audio.Play(loseSound, volume);
+    }
+
+    public void Play_DeathVoiceline(){
+        int randomChance = UnityEngine.Random.Range(0, 3);
+        if(randomChance != 1)
+            return;
+
+        float volume = SharedData.volumes[2] * SharedData.masterVolume;
+        AudioClip randomDeathSound = deathSoundClips[UnityEngine.Random.Range(0,deathSoundClips.Count-1)];
+        audio.PlayForce(randomDeathSound, volume);
+    }
+
+    public void Play_SkipVoiceline(){
+        int randomChance = UnityEngine.Random.Range(0, 3);
+        if(randomChance != 1)
+            return;
+
+        float volume = SharedData.volumes[2] * SharedData.masterVolume;
+        AudioClip randomSkipEffect = skipPrompts[UnityEngine.Random.Range(0,skipPrompts.Count-1)];
+        audio.PlayForce(randomSkipEffect, volume);
+      
     }
 }

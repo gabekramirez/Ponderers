@@ -31,6 +31,7 @@ public class Player_Main : MonoBehaviour
     private Audio audio;
     private AudioClip walkClip;
     private AudioClip wallHitClip;
+    private AudioController audioController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,7 +54,7 @@ public class Player_Main : MonoBehaviour
         audioPrefab = Resources.Load<GameObject>("Audio");
         audio = GameObject.Instantiate(audioPrefab).transform.GetComponent<Audio>();
 
-        AudioController audioController = Instantiate(audioControllerPrefab).transform.GetComponent<AudioController>();
+        audioController = Instantiate(audioControllerPrefab).transform.GetComponent<AudioController>();
         audioController.RanAwake();
         levelManager.audioController = audioController;
         levelManager.CalledStart();
@@ -126,7 +127,8 @@ public class Player_Main : MonoBehaviour
         }else if (rayHit && rayHit.collider.CompareTag("Spikes") && levelManager.victoryComplete == false)
         {
             levelManager.inputTimeRemaining = 0f;
-            print("spike hit");
+            
+            audioController.Play_DeathVoiceline();
         }
 
         if (movement_vector.magnitude > 0f)
