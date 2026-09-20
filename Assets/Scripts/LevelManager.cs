@@ -39,6 +39,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private SpriteRenderer endPieceRenderer;
 
+    [SerializeField] private bool playPonderMusic = true;
+    [SerializeField] private bool playGameplayMusic = false;
 
     //Called by Player_Main
     public void CalledStart(){
@@ -55,6 +57,7 @@ public class LevelManager : MonoBehaviour
         timeRanOut = false;
         firstInputPut = false;
         victoryComplete = false;
+        playPonderMusic = true;
         vignetteAnimator.gameObject.SetActive(true);
         if(LevelManager.attemptsPerLevel == null){
             LevelManager.attemptsPerLevel = new List<int>();
@@ -86,9 +89,11 @@ public class LevelManager : MonoBehaviour
         canvas.transform.Find("TimeRunOut/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
         canvas.transform.Find("HowToPlay/CloseBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
     
-        MusicManager.Instance.PlayMusic("Pondering");
 
         vignetteAnimator.GetComponent<SpriteRenderer>().sortingOrder = 5;
+
+        if(attempts > 3)
+            audioController.Play_SkipVoiceline();
     }
 
 
@@ -101,19 +106,28 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(playPonderMusic)
+            MusicManager.Instance.PlayMusic("Pondering");
+        else if(playGameplayMusic)
+            MusicManager.Instance.PlayMusic("Gameplay");
+
+
         if(!victoryComplete && firstInputPut == false)
             timeSpentPondering += Time.deltaTime;
         if(timeSpentPondering >= 30f){
             //Play a voice line to let them know about skip button
         }
 
+        
+
         //Detect first input
-        if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame && LevelManager.shownInstructions){
+        if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame && LevelManager.shownInstructions && !firstInputPut){
             firstInputPut = true;
             //Switch the music
 
             MusicManager.Instance.StopMusic();
-            MusicManager.Instance.PlayMusic("Gameplay");
+            playPonderMusic = false;
+            playGameplayMusic = true;
         }
 
         timeRemainingTXT.text = $"Time Remaining: {inputTimeRemaining.ToString("N0")}";

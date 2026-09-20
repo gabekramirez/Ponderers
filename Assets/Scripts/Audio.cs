@@ -54,7 +54,6 @@ public class Audio : MonoBehaviour
         {
             audioSource.clip = clip;
             audioSource.volume = volume;
-            Debug.Log("HERE THE VOLUME IS: " + volume.ToString());
             audioSource.Play();
         }
     }
