@@ -251,7 +251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time Remaning: 10'
+  m_text: 'Time Remaining: 10'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d184e12f9c952df4abe6802f7cec025e, type: 2}
   m_sharedMaterial: {fileID: 709705687147001992, guid: d184e12f9c952df4abe6802f7cec025e, type: 2}
@@ -452,7 +452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 850, y: -59}
+  m_AnchoredPosition: {x: 973.8, y: -194.08319}
   m_SizeDelta: {x: 325, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329820633

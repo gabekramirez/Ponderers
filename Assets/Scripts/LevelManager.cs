@@ -87,7 +87,10 @@ public class LevelManager : MonoBehaviour
 
         canvas.transform.Find("LevelEnd/Buttons/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
         canvas.transform.Find("TimeRunOut/ReplayBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
-        canvas.transform.Find("HowToPlay/CloseBTN").transform.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
+       
+        Transform buttonOb = canvas.transform.Find("HowToPlay/CloseBTN");
+        if(buttonOb != null)
+        buttonOb.GetComponent<Button>().onClick.AddListener(() => audioController.Add_ClickSound());
     
 
         vignetteAnimator.GetComponent<SpriteRenderer>().sortingOrder = 5;
@@ -118,8 +121,6 @@ public class LevelManager : MonoBehaviour
             //Play a voice line to let them know about skip button
         }
 
-        
-
         //Detect first input
         if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame && LevelManager.shownInstructions && !firstInputPut){
             firstInputPut = true;
@@ -136,10 +137,12 @@ public class LevelManager : MonoBehaviour
             inputTimeRemaining -= Time.deltaTime;
 
         if(inputTimeRemaining <= 0f && !timeRanOut){
-            print("levle manager end");
             timeRanOut = true;
             TimeOutPanel.SetActive(true);
             player.GetComponent<Player_Main>().enabled = false;
+            GameObject playerCloneObject = GameObject.Find("Scaler/Player (1)");
+            if(playerCloneObject!= null)
+                playerCloneObject.GetComponent<Player_Main>().enabled = false;
             audioController.Play_LoseSound();
         }
 
@@ -161,6 +164,7 @@ public class LevelManager : MonoBehaviour
 
         int currentSceneIdx = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIdx = currentSceneIdx+1;
+        MusicManager.Instance.StopMusic();
 
        /* if(nextSceneIdx > LevelManager.SCENE_COUNT)
         {
