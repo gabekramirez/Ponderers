@@ -363,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 1716867888009584838, guid: 84e2d627aad587d4bbeb380d684a3393, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 9551d04306fa3b947886a52603154108, type: 3}
+      objectReference: {fileID: 8300000, guid: f010f681832aa44638ad99453fddc9f4, type: 3}
     - target: {fileID: 1716867888009584838, guid: 84e2d627aad587d4bbeb380d684a3393, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -762,7 +762,7 @@ PrefabInstance:
     - target: {fileID: 1716867888009584838, guid: 84e2d627aad587d4bbeb380d684a3393, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 68481aa313b9bf8469d7a5cb3074e9f8, type: 3}
+      objectReference: {fileID: 8300000, guid: 102164c22dd6a408e8c0dd9fc29b6c7a, type: 3}
     - target: {fileID: 1716867888009584838, guid: 84e2d627aad587d4bbeb380d684a3393, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -1062,7 +1062,7 @@ PrefabInstance:
     - target: {fileID: 1716867888009584838, guid: 84e2d627aad587d4bbeb380d684a3393, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 70bad18e79bcb79468461b647692e72b, type: 3}
+      objectReference: {fileID: 8300000, guid: d715ac9a0046644edb616a881c3e661e, type: 3}
     - target: {fileID: 1716867888009584838, guid: 84e2d627aad587d4bbeb380d684a3393, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -1246,12 +1246,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneManager
   cutsceneToPlay: 0
   background: {fileID: 180963362}
+  rightCover: {fileID: 0}
   camera: {fileID: 1338362818}
   scene: {fileID: 752144162}
   louie: {fileID: 1565794094}
   beaver: {fileID: 0}
   louieHouse: {fileID: 595985920}
-  beaverHouse: {fileID: 0}
   vignetteAnimator: {fileID: 1261648695}
   audio:
   - {fileID: 1022678775}
