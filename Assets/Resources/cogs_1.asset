@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: marble_0
+  m_Name: cogs_1
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: -1240476407, guid: ee0c04706cbd0f64fbfa95ae9323ce08, type: 3}
-  m_Color: {r: 0.5754717, g: 0.38654324, b: 0.32845318, a: 1}
+  m_Sprite: {fileID: 5162371436558402435, guid: c240d0d559801154b81e734f7a844445, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0

@@ -12,7 +12,6 @@ public class ItemHover : MonoBehaviour
         WINDOW,
         ROOF
     }
-    public int item_type = 0;
     private string[] item_types = {
         "Wood",
         "Silver",
@@ -29,12 +28,12 @@ public class ItemHover : MonoBehaviour
     {
         s_renderer = GetComponent<SpriteRenderer>();
         initial_y = transform.position.y;
-
+        int item_type = (int)itemType;
         sprite_list.Add(Resources.Load<Sprite>(item_types[item_type] + "Door"));
         sprite_list.Add(Resources.Load<Sprite>(item_types[item_type] + "Wall"));
         sprite_list.Add(Resources.Load<Sprite>(item_types[item_type] + "Window"));
         sprite_list.Add(Resources.Load<Sprite>(item_types[item_type] + "Roof"));
-        s_renderer.sprite = sprite_list[(int)itemType];
+        s_renderer.sprite = sprite_list[item_type];
 
     }
     // Update is called once per frame
